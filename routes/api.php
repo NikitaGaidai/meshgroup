@@ -33,6 +33,9 @@ Route::prefix('/categories')->group(function () {
 
 Route::prefix('/products')->group(function () {
 
+    Route::get('/', 'ProductController@get');
+    Route::get('/{id}', 'ProductController@getById');
+
     Route::middleware('auth:api')->group(function () {
 
         Route::post('/create', 'ProductController@create');

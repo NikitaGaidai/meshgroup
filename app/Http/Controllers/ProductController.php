@@ -8,6 +8,24 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function get ()
+    {
+        return response()->json(['products' => Product::all()]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getById ($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json(['product' => $product]);
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
